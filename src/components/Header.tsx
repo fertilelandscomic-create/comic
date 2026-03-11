@@ -8,7 +8,7 @@ export default function Header() {
                 <img src={Logo} alt="Fertile Lands" />
             </a>
             <nav className="bg-accent border-y border-secondary ">
-                <ul className="flex gap-4 p-2 justify-end">
+                <ul className="flex gap-4 py-2 px-6 justify-end">
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/cast">Cast</a></li>
