@@ -9,7 +9,7 @@ export default function Header() {
                 <img src={Logo} alt="Fertile Lands" />
             </Link>
             <nav className="bg-accent border-y border-secondary ">
-                <ul className="flex gap-4 py-2 px-6 justify-end">
+                <ul className="flex gap-4 py-2 px-6 justify-end text-xl [&>li]:hover:scale-105 [&>li]:hover:transition-transform">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/cast">Cast</Link></li>
