@@ -1,4 +1,4 @@
 body {
-    font-family: 'Architects Daughter', cursive;
     background-color: var(--color-primary);
+    font-family: var(--font-default);
 }
