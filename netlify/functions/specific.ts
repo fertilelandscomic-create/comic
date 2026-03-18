@@ -2,6 +2,9 @@ import { Handler, HandlerEvent } from "@netlify/functions";
 import { getAllPosts, getPostById } from "../utilities/api";
 
 export const handler:Handler = async (event: HandlerEvent) => {
+
+  console.log("Handler Event: ", event);
+
   const rawChapter = event.queryStringParameters?.chapter;
   const rawPage = event.queryStringParameters?.page;
 
