@@ -65,8 +65,6 @@ export default async (request: Request) => {
     };
   }
 
-  console.log('Blah ', currentPage.description);
-
   const page = {
     id: currentPage.id,
     description: currentPage.description,
