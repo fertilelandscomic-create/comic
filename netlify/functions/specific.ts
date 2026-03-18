@@ -6,6 +6,8 @@ export default async (request: Request) => {
   const rawChapter = url.searchParams.get("chapter");
   const rawPage = url.searchParams.get("page");
 
+  console.log("URL:", url);
+
   const chapterNumber =
     rawChapter !== null && Number(rawChapter) > 0 ? Number(rawChapter) : 1;
   const pageNumber =
