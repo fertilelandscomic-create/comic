@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, redirect, RouterProvider } from "react-router";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import AboutPage from "./pages/AboutPage";
 import CastPage from "./pages/CastPage";
 import ArchivePage from "./pages/ArchivePage";
@@ -27,12 +27,19 @@ function App() {
       path: "/comic",
       children: [
         {
-          path: ":id",
-          loader: ({ params }) => {
-            if (Number(params.id) <= 1) return redirect("/comic/first");
-            else if (params.id !== 'first' && params.id !== 'latest' && (isNaN(Number(params.id)) || Number(params.id) >= 2)) return redirect("/comic/latest");
-          },
-          element: <ComicPage />
+          path: "/comic/first",
+          loader: () => fetch("/api/first").then((response) => response.json()),
+          element: <ComicPage />,
+        },
+        {
+          path: "/comic/latest",
+          loader: () => fetch("/api/latest").then((response) => response.json()),
+          element: <ComicPage />,
+        },
+        {
+          path: "/comic/:chapter/:page",
+          loader: ({ params }) => fetch(`/api/${params.chapter}/${params.page}`).then((response) => response.json()),
+          element: <ComicPage />,
         },
       ],
     }
