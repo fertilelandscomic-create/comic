@@ -1,12 +1,9 @@
+import { Handler, HandlerEvent } from "@netlify/functions";
 import { getAllPosts, getPostById } from "../utilities/api";
 
-export default async (request: Request) => {
-  const url = new URL(request.url);
-
-  const rawChapter = url.searchParams.get("chapter");
-  const rawPage = url.searchParams.get("page");
-
-  console.log("URL:", url);
+export const handler:Handler = async (event: HandlerEvent) => {
+  const rawChapter = event.queryStringParameters?.chapter;
+  const rawPage = event.queryStringParameters?.page;
 
   const chapterNumber =
     rawChapter !== null && Number(rawChapter) > 0 ? Number(rawChapter) : 1;
@@ -17,13 +14,13 @@ export default async (request: Request) => {
   const chapters = posts.data;
 
   if (!chapters.length) {
-    return Response.json({ error: "No posts found" }, { status: 404 });
+    return { statusCode: 404, body: JSON.stringify({ error: "No posts found" }) };
   }
 
   const chapterCount = chapters.length;
 
   if (chapterNumber > chapterCount) {
-    return Response.json({ error: "Chapter not found" }, { status: 404 });
+    return { statusCode: 404, body: JSON.stringify({ error: "Chapter not found" }) };
   }
 
   const currentPostId = chapters[chapterNumber - 1].id;
@@ -32,7 +29,7 @@ export default async (request: Request) => {
   const imageCount = currentPost.data.images.length;
 
   if (pageNumber > imageCount) {
-    return Response.json({ error: "Page not found" }, { status: 404 });
+    return { statusCode: 404, body: JSON.stringify({ error: "Page not found" }) };
   }
 
   const currentPage = currentPost.data.images[pageNumber - 1];
@@ -79,5 +76,11 @@ export default async (request: Request) => {
     previous_page,
   };
 
-  return Response.json(page);
+  return {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(page),
+  }
 };
