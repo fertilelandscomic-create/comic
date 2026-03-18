@@ -8,8 +8,6 @@ export default function ComicPage() {
 
     const page = useLoaderData();
 
-    console.log(page);
-
     return (
         <>
             <Header />
