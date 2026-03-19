@@ -1,7 +1,8 @@
-import { Link } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import Logo from "../assets/ui/fertile-lands-logo.png";
 
 export default function Header() {
+    const location = useLocation();
 
     return (
         <header>
@@ -9,11 +10,24 @@ export default function Header() {
                 <img src={Logo} alt="Fertile Lands" />
             </Link>
             <nav className="bg-accent border-y border-secondary ">
-                <ul className="flex gap-4 py-2 px-6 justify-end text-xl [&>li]:hover:scale-105 [&>li]:hover:transition-transform">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/cast">Cast</Link></li>
-                    <li><Link to="/archive">Archive</Link></li>
+                <ul className="
+                    flex gap-4 py-2 px-6 justify-end text-xl 
+                    [&>li]:hover:scale-105 [&>li]:hover:transition-transform 
+                    [&_.active]:text-tertiary [&_.active]:font-bold
+                ">
+                    <li>
+                        <NavLink
+                            to="/"
+                            className={({ isActive }) =>
+                                isActive || location.pathname.startsWith("/comic") ? "active" : ""
+                            }
+                        >
+                            Home
+                        </NavLink>
+                    </li>
+                    <li><NavLink to="/about">About</NavLink></li>
+                    <li><NavLink to="/cast">Cast</NavLink></li>
+                    <li><NavLink to="/archive">Archive</NavLink></li>
                 </ul>
             </nav>
         </header>

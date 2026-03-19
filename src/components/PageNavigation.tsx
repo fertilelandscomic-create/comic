@@ -21,23 +21,23 @@ export default function PageNavigation({ currentPage }: { currentPage: PageDetai
         <nav className="flex gap-4 sticky bottom-2">
             <ul className='flex mx-auto p-4 max-w-md gap-1 [&>li]:hover:scale-105 [&>li]:hover:transition-transform [&_img]:transition-[filter]'>
                 <li>
-                    <Link to="/comic/first">
+                    <Link to="/comic/first" className={`${currentPage.previous_page === null ? 'grayscale pointer-events-none' : ''}`}>
                         <img src={LastArrow} alt="First page" className={`scale-x-[-1] ${currentPage.previous_page === null ? 'grayscale' : ''}`} />
                     </Link>
                 </li>
                 <li>
-                    <Link to={`/comic/${currentPage.previous_page !== null ? currentPage.previous_page.chapter_number + '/' + currentPage.previous_page.page_number : 'first'}`}>
+                    <Link to={`/comic/${currentPage.previous_page !== null ? currentPage.previous_page.chapter_number + '/' + currentPage.previous_page.page_number : 'first'}`} className={`${currentPage.previous_page === null ? 'grayscale pointer-events-none' : ''}`}>
                         <img src={NextArrow} alt="Previous page" className={`scale-x-[-1] ${currentPage.previous_page === null ? 'grayscale' : ''}`} />
                     </Link>
                 </li>
                 <li>
-                    <Link to={`/comic/${currentPage.next_page !== null ? currentPage.next_page.chapter_number + '/' + currentPage.next_page.page_number : currentPage.chapter_number + '/' + (currentPage.page_number + 1)}`}>
-                        <img src={NextArrow} alt="Next page" className={`${currentPage.next_page === null ? 'grayscale' : ''}`} />
+                    <Link to={`/comic/${currentPage.next_page !== null ? currentPage.next_page.chapter_number + '/' + currentPage.next_page.page_number : currentPage.chapter_number + '/' + (currentPage.page_number + 1)}`} className={`${currentPage.next_page === null ? 'grayscale pointer-events-none' : ''}`}>
+                        <img src={NextArrow} alt="Next page" />
                     </Link>
                 </li>
                 <li>
-                    <Link to="/comic/latest">
-                        <img src={LastArrow} alt="Latest page" className={`${currentPage.next_page === null ? 'grayscale' : ''}`} />
+                    <Link to="/comic/latest" className={`${currentPage.next_page === null ? 'grayscale pointer-events-none' : ''}`}>
+                        <img src={LastArrow} alt="Latest page" />
                     </Link>
                 </li>
             </ul>

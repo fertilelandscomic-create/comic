@@ -1,27 +1,35 @@
 import { useLoaderData } from "react-router";
 import Header from "../components/Header";
-import ChapterCard from "../components/ChapterCard";
+import ChapterContainer from "../components/ChapterContainer";
+import Footer from "../components/Footer";
 
 export default function ArchivePage() {
 
     const chapters = useLoaderData();
 
-    console.log(chapters);
-
+    type Chapter = {
+        id: string;
+        title: string;
+        number: number;
+        description: string;
+        thumbnail: string;
+    };
 
     return (
         <>
             <Header />
-            <h1>Archive</h1>
-
-            {chapters.map((chapter: { id: string; title: string; description: string; thumbnail: { link: string };  }, index: number) => (
-                <ChapterCard
-                    key={chapter.id}
-                    title={chapter.title || 'Untitled Chapter'}
-                    thumbnail={chapter.thumbnail.link}
-                    description={`Chapter ${index + 1}`}
-                />
-            ))}
+            <main className="p-4">
+                {chapters.map((chapter: Chapter) => (
+                    <ChapterContainer
+                        key={chapter.id}
+                        title={`Chapter ${chapter.number}: ${chapter.title}`}
+                        thumbnail={chapter.thumbnail}
+                        id={chapter.id}
+                        number={chapter.number}
+                    />
+                ))}
+            </main>
+            <Footer />
         </>
     );
 }

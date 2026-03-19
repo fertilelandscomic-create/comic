@@ -1,7 +1,9 @@
 @theme {
     --color-primary: #B9E38D;
     --color-secondary: #005100;
+    --color-tertiary: #64ba2d;
     --color-accent: #FFF4C9;
 
     --font-default: 'Playwrite DE Grund Variable', cursive;
+    --font-heading: 'Joti One', system-ui;
 }

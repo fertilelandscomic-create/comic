@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router";
 import AboutPage from "./pages/AboutPage";
 import CastPage from "./pages/CastPage";
 import ArchivePage from "./pages/ArchivePage";
@@ -9,7 +9,8 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Navigate to="/comic/latest" replace />,
+      loader: () => redirect("/comic/latest"),
+      element: <ComicPage />,
     },
     {
       path: "/about",

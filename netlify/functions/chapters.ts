@@ -8,5 +8,11 @@ export default async () => {
         return Response.json({ error: "No posts found" }, { status: 404 });
     }
 
-    return Response.json(chapters);
-}
+    return Response.json(chapters.map((chapter: { id: string, title: string, thumbnail: { link: string } }, index: number) => ({
+        id: chapter.id,
+        number: index + 1,
+        title: chapter.title,
+        thumbnail: chapter.thumbnail.link
+    })));
+
+}  
