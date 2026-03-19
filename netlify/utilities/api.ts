@@ -1,4 +1,4 @@
-export const options = {
+const options = {
     headers: {
         Authorization: `Bearer ${process.env.IMGCHEST_API_TOKEN}`,
     },

@@ -21,6 +21,7 @@ function App() {
     },
     {
       path: "/archive",
+      loader: () => fetch("/api/chapters").then((response) => response.json()),
       element: <ArchivePage />,
     },
     {
