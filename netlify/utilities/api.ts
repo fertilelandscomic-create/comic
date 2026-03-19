@@ -1,4 +1,4 @@
-export const options = {
+const options = {
     headers: {
         Authorization: `Bearer ${process.env.IMGCHEST_API_TOKEN}`,
     },
@@ -20,4 +20,4 @@ const fetchData = async (endpoint: string) => {
 };
 
 export const getAllPosts = () => fetchData(`user/${process.env.IMGCHEST_USERNAME}/posts`);
-export const getPostById = (id: number) => fetchData(`post/${id}`);
+export const getPostById = (id: string) => fetchData(`post/${id}`);

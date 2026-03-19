@@ -1,6 +1,12 @@
 [[redirects]]
+from = "/api/chapter/:id"
+to = "/.netlify/functions/chapter?id=:id"
+status = 200
+force = true
+
+[[redirects]]
 from = "/api/:chapter/:page"
-to = "/.netlify/functions/specific?chapter=:chapter&page=:page"
+to = "/.netlify/functions/page?chapter=:chapter&page=:page"
 status = 200
 force = true
 
