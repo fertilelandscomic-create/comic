@@ -51,7 +51,7 @@ export default function ChapterContainer({ title, thumbnail, id, number }: { tit
     return (
         <details
             ref={detailsRef}
-            className="chapter-card border border-secondary font-heading text-5xl overflow-hidden [&:open>summary]:border-b bg-accent max-w-3xl mx-auto"
+            className="chapter-card border border-secondary font-heading text-5xl overflow-hidden [&:open>summary]:border-b bg-accent w-full max-w-3xl mx-auto [&:open>summary>p>span]:rotate-90"
         >
             <summary
                 className="relative flex bg-black items-center border-secondary cursor-pointer"
@@ -59,9 +59,9 @@ export default function ChapterContainer({ title, thumbnail, id, number }: { tit
             >
                 <img src={thumbnail} alt={title} className="w-35 border-r border-secondary" />
                 <p className="
-                    p-8 text-tertiary text-[clamp(1.5rem,5vw,3rem)]
+                    p-4 px-8 text-tertiary text-[clamp(1.5rem,5vw,3rem)] w-full flex items-center
                     drop-shadow-[1px_0_.3px_var(--color-secondary),-1px_0_.3px_var(--color-secondary),0_1px_.3px_var(--color-secondary),0_-1px_.3px_var(--color-secondary),1px_1px_.3px_var(--color-secondary),-1px_1px_.3px_var(--color-secondary),1px_-1px_.3px_var(--color-secondary),-1px_-1px_.3px_var(--color-secondary)]
-                ">{title}</p>
+                ">{title}<span className="ml-auto transition-transform">▶</span></p>
             </summary>
 
             <div
