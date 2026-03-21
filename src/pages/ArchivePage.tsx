@@ -18,7 +18,7 @@ export default function ArchivePage() {
     return (
         <>
             <Header />
-            <main className="p-4">
+            <main className="p-4 flex flex-col gap-4">
                 {chapters.map((chapter: Chapter) => (
                     <ChapterContainer
                         key={chapter.id}
