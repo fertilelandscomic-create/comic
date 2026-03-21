@@ -2,7 +2,7 @@ import { getAllPosts, getPostById } from "../utilities/api";
 
 export default async () => {
   const posts = await getAllPosts();
-  const chapters = posts.data;
+  const chapters = posts.data.reverse();
 
   if (!chapters.length) {
     return Response.json({ error: "No posts found" }, { status: 404 });
