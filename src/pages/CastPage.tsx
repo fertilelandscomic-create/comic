@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 export default function CastPage() {
@@ -5,7 +6,10 @@ export default function CastPage() {
     return (
         <>
         <Header />
-        <h1>Cast</h1>
+        <main>
+            <h1>Cast</h1>
+        </main>
+        <Footer />
         </>
     );
 }
