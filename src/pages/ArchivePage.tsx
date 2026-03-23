@@ -2,18 +2,11 @@ import { useLoaderData } from "react-router";
 import Header from "../components/Header";
 import ChapterContainer from "../components/ChapterContainer";
 import Footer from "../components/Footer";
+import type { Chapter } from "../types/Chapter";
 
 export default function ArchivePage() {
 
     const chapters = useLoaderData();
-
-    type Chapter = {
-        id: string;
-        title: string;
-        number: number;
-        description: string;
-        thumbnail: string;
-    };
 
     return (
         <>

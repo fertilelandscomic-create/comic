@@ -3,6 +3,7 @@ import AboutPage from "./pages/AboutPage";
 import CastPage from "./pages/CastPage";
 import ArchivePage from "./pages/ArchivePage";
 import ComicPage from "./pages/ComicPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
 
@@ -30,20 +31,21 @@ function App() {
       children: [
         {
           path: "/comic/first",
-          loader: () => fetch("/api/first").then((response) => response.json()),
           element: <ComicPage />,
         },
         {
           path: "/comic/latest",
-          loader: () => fetch("/api/latest").then((response) => response.json()),
           element: <ComicPage />,
         },
         {
           path: "/comic/:chapter/:page",
-          loader: ({ params }) => fetch(`/api/${params.chapter}/${params.page}`).then((response) => response.json()),
           element: <ComicPage />,
         },
       ],
+    },
+    {
+      path: "*",
+      element: <NotFoundPage />,
     }
 
   ]);
