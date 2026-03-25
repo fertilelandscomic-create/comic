@@ -20,4 +20,10 @@ const fetchData = async (endpoint: string) => {
 };
 
 export const getAllPosts = () => fetchData(`user/${process.env.IMGCHEST_USERNAME}/posts`);
-export const getPostById = (id: string) => fetchData(`post/${id}`);
+export const getPostById = async (id: string) => {
+    const post = await fetchData(`post/${id}`);
+
+    post.data.images.sort((a: { position: number }, b: { position: number }) => a.position - b.position);
+
+    return post;
+};
