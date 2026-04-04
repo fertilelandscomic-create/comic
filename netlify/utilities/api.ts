@@ -1,11 +1,16 @@
+const API_TOKEN = process.env.IMGCHEST_API_TOKEN;
+const API_BASE_URL = process.env.IMGCHEST_API_BASE_URL;
+const USERNAME = process.env.IMGCHEST_USERNAME;
+
+
 const options = {
     headers: {
-        Authorization: `Bearer ${process.env.IMGCHEST_API_TOKEN}`,
+        Authorization: `Bearer ${API_TOKEN}`,
     },
 };
 
 const fetchData = async (endpoint: string) => {
-    const url = new URL(endpoint, process.env.IMGCHEST_API_BASE_URL as string);
+    const url = new URL(endpoint, API_BASE_URL);
 
     try {
         const response = await fetch(url, options);
@@ -19,7 +24,7 @@ const fetchData = async (endpoint: string) => {
     }
 };
 
-export const getAllPosts = () => fetchData(`user/${process.env.IMGCHEST_USERNAME}/posts`);
+export const getAllPosts = () => fetchData(`user/${USERNAME}/posts`);
 export const getPostById = async (id: string) => {
     const post = await fetchData(`post/${id}`);
 
