@@ -7,3 +7,15 @@
     --font-default: 'Playwrite DE Grund Variable', cursive;
     --font-heading: 'Joti One', system-ui;
 }
+
+.drop-shadow-title {
+    filter:
+        drop-shadow(1px 0 .3px var(--color-secondary))
+        drop-shadow(2px 0 .3px var(--color-secondary))
+        drop-shadow(-1px 0 .3px var(--color-secondary))
+        drop-shadow(-2px 0 .3px var(--color-secondary))
+        drop-shadow(0 1px .3px var(--color-secondary))
+        drop-shadow(0 2px .3px var(--color-secondary))
+        drop-shadow(0 -1px .3px var(--color-secondary))
+        drop-shadow(0 -2px .3px var(--color-secondary));
+}
