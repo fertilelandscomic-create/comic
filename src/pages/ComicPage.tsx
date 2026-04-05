@@ -3,7 +3,7 @@ import PageNavigation from "../components/PageNavigation";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import type { PageDetails } from "../types/PageDetails";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import Spinner from "../assets/ui/spinner.gif";
 
 
@@ -13,6 +13,8 @@ export default function ComicPage() {
     const { chapter, page } = useParams();
     const [pageDetails, setPageDetails] = useState({} as PageDetails);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
 
         async function fetchData() {
@@ -20,12 +22,13 @@ export default function ComicPage() {
             setPageDetails({} as PageDetails);
 
             fetch(`/api/${path === "first" || path === "latest" ? path : `${chapter}/${page}`}`)
-                .then((response) => response.json())
-                .then((data) => setPageDetails(data));
+                .then((response) => response.ok ? response.json() : Promise.reject(new Error("Failed to fetch page details")))
+                .then((data) => setPageDetails(data))
+                .catch(() => navigate("/comic/latest", { replace: true }));
         }
         fetchData();
 
-    }, [chapter, page, path]);
+    }, [chapter, page, path, navigate]);
 
     return (
         <>
