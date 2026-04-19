@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
 import type { PageDetails } from "../types/PageDetails";
 import { useLocation, useNavigate, useParams } from "react-router";
-import Spinner from "../assets/ui/spinner2.gif";
+import Spinner from "../assets/ui/spinner3.gif";
 
 
 export default function ComicPage() {
