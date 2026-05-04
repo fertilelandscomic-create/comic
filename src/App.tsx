@@ -28,19 +28,16 @@ function App() {
     },
     {
       path: "/comic",
+      element: <ComicPage />,
       children: [
         {
-          path: "/comic/first",
-          element: <ComicPage />,
+          index: true,
+          loader: () => redirect("/comic/latest"),
         },
-        {
-          path: "/comic/latest",
-          element: <ComicPage />,
-        },
-        {
-          path: "/comic/:chapter/:page",
-          element: <ComicPage />,
-        },
+        { path: "first" },
+        { path: "latest" },
+        { path: ":chapter/:page" },
+        { path: "*", loader: () => redirect("/comic/latest") },
       ],
     },
     {
