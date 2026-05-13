@@ -34,10 +34,23 @@ function App() {
           index: true,
           loader: () => redirect("/comic/latest"),
         },
-        { path: "first" },
-        { path: "latest" },
-        { path: ":chapter/:page" },
-        { path: "*", loader: () => redirect("/comic/latest") },
+        {
+          path: "first",
+          element: null
+        },
+        {
+          path: "latest",
+          element: null,
+        },
+        {
+          path: ":chapter/:page",
+          element: null
+        },
+        {
+          path: "*",
+          element: null,
+          loader: () => redirect("/comic/latest")
+        },
       ],
     },
     {
