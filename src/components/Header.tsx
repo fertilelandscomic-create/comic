@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router";
 import Logo from "../assets/ui/fertile-lands-logo.png";
 import KofiIcon from "../assets/ui/kofi-icon.svg";
+import TapasIcon from "../assets/ui/tapas-icon.svg";
 
 export default function Header() {
     const location = useLocation();
@@ -29,9 +30,16 @@ export default function Header() {
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/cast">Cast</NavLink></li>
                     <li><NavLink to="/archive">Archive</NavLink></li>
+                    <li className="border-l border-secondary"></li>
+                    
                     <li><Link to="https://ko-fi.com/fertile_lands" target="_blank" rel="noopener noreferrer">
                         <img className="h-8" src={KofiIcon} alt="Ko-fi" />
                     </Link></li>
+                    <li>
+                        <Link to="https://tapas.io/series/Fertile-Lands" target="_blank" rel="noopener noreferrer">
+                            <img className="h-8" src={TapasIcon} alt="Tapas" />
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>
