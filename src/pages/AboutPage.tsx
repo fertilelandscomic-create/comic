@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import CobaltImage from "../assets/about/cobalt.png";
+import CobaltImage from "../assets/about/pfp.png";
 import VicShockedImage from "../assets/about/vicshocked.png";
 import { ProtectedEmailLink } from "../components/ProtectedEmailLink";
 import { FaBluesky } from "react-icons/fa6";
