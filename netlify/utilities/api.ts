@@ -1,3 +1,7 @@
+declare const process: {
+    env: Record<string, string | undefined>;
+};
+
 const API_TOKEN = process.env.IMGCHEST_API_TOKEN;
 const API_BASE_URL = process.env.IMGCHEST_API_BASE_URL;
 const USERNAME = process.env.IMGCHEST_USERNAME;
