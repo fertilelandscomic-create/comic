@@ -1,18 +1,26 @@
-import { createBrowserRouter, redirect, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
+/*
 import AboutPage from "./pages/AboutPage";
 import CastPage from "./pages/CastPage";
 import ArchivePage from "./pages/ArchivePage";
 import ComicPage from "./pages/ComicPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
+*/
+
+import TechnicalDifficulttiesPage from "./pages/TechnicalDifficulttiesPage";
+
 function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
-      loader: () => redirect("/comic/latest"),
-      element: <ComicPage />,
-    },
+     // path: "/",
+     // loader: () => redirect("/comic/latest"),
+      //element: <ComicPage />,
+      path: "*",
+      element: <TechnicalDifficulttiesPage />,
+
+    },/*
     {
       path: "/about",
       element: <AboutPage />,
@@ -49,7 +57,7 @@ function App() {
         {
           path: "*",
           element: null,
-          loader: () => redirect("/comic/latest")
+          //loader: () => redirect("/comic/latest")
         },
       ],
     },
@@ -57,6 +65,7 @@ function App() {
       path: "*",
       element: <NotFoundPage />,
     }
+*/
 
   ]);
 
